@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         let mainTable = UITableViewController()
         mainTable.tableView.dataSource = self
 
-        let rootTable = UITableViewController()
+        let rootTable = ScrollableTableViewController()
         rootTable.tableView.dataSource = self
         rootTable.tableView.rowHeight = 88
 
@@ -51,7 +51,10 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 
     @objc private func addButtonTap(_ sender: UIBarButtonItem) {
-        sheet.pushViewController(UIViewController(), animated: true)
+        let innerController = ScrollableTableViewController()
+        innerController.navigationItem.title = "Pushed sheet"
+        let outerController = UINavigationController(rootViewController: innerController)
+        sheet.pushViewController(outerController, animated: true)
     }
 
     private var counter = 1
