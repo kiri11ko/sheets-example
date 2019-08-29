@@ -1,43 +1,41 @@
 //
-//  ExampleOneViewController.swift
-//  SheetController
+//  ExampleOneCoordinator.swift
+//  sheets-example
 //
-//  Created by Artyom Pstygo on 15.08.2019.
+//  Created by Artyom Pstygo on 29.08.2019.
 //  Copyright © 2019 Artyom Pstygo. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import sheets
 
-class ExampleOneViewController: UIViewController, UITableViewDataSource {
+class ExampleOneCoordinator: CoordinatorType {
 
+    private let dataSource = SimpleDataSource(objects: Array(1...100))
     private var sheet: SheetController!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        definesPresentationContext = true
-    }
+    func start() -> UIViewController {
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        // Controllers
 
-        let mainTable = UITableViewController()
-        mainTable.tableView.dataSource = self
-
-        let rootTable = ScrollableTableViewController()
-        rootTable.tableView.dataSource = self
-        rootTable.tableView.rowHeight = 88
-
-        presentTestControllers(root: rootTable, main: mainTable)
-    }
-
-    private func presentTestControllers(root: UIViewController, main: UIViewController) {
-        root.navigationItem.title = "Root"
+        let main = UITableViewController()
+        main.tableView.dataSource = dataSource
         main.navigationItem.title = "Main"
+
+        let root = ScrollableTableViewController()
+        root.tableView.dataSource = dataSource
+        root.tableView.rowHeight = 88
+        root.navigationItem.title = "Root"
 
         let rootHolder = UINavigationController(rootViewController: root)
         let mainHolder = UINavigationController(rootViewController: main)
         mainHolder.navigationBar.prefersLargeTitles = true
+
+        let sheet = SheetController(mainViewController: mainHolder, rootViewController: rootHolder)
+        self.sheet = sheet
+
+        // Actions
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTap(_:)))
         root.navigationItem.rightBarButtonItem = addButton
@@ -45,11 +43,7 @@ class ExampleOneViewController: UIViewController, UITableViewDataSource {
         let switchButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(switchButtonTap(_:)))
         main.navigationItem.rightBarButtonItem = switchButton
 
-        let sheet = SheetController(mainViewController: mainHolder, rootViewController: rootHolder)
-        sheet.modalPresentationStyle = .overCurrentContext
-        self.sheet = sheet
-
-        present(sheet, animated: false)
+        return sheet
     }
 
     @objc private func addButtonTap(_ sender: UIBarButtonItem) {
@@ -65,20 +59,6 @@ class ExampleOneViewController: UIViewController, UITableViewDataSource {
                                    [.pointsFromTop(200), .pointsFromBottom(200)]]
         sheet.setAnchors(anchors[counter % 2], animated: true, snapTo: 1)
         counter += 1
-    }
-
-    // MARK: - UITableViewDataSource
-
-    static let count = 100
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ExampleOneViewController.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = String(indexPath.item + 1)
-        return cell
     }
 
 }

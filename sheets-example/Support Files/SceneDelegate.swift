@@ -11,7 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var coordinators = [CoordinatorType]()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -19,14 +19,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
 
-        let viewController1 = ExampleOneViewController()
+        let exampleOneCoordinator = ExampleOneCoordinator()
+        coordinators.append(exampleOneCoordinator)
+        let viewController1 = exampleOneCoordinator.start()
         viewController1.tabBarItem = UITabBarItem(title: "Example 1",
                                                   image: UIImage(systemName: "1.circle"),
                                                   selectedImage: UIImage(systemName: "1.circle.fill"))
 
+        let exampleTwoCoordinator = ExampleTwoCoordinator()
+        coordinators.append(exampleTwoCoordinator)
+        let viewController2 = exampleTwoCoordinator.start()
+        viewController2.tabBarItem = UITabBarItem(title: "Example 2",
+                                                  image: UIImage(systemName: "2.circle"),
+                                                  selectedImage: UIImage(systemName: "2.circle.fill"))
+
         let tabBarController = UITabBarController()
         tabBarController.view.frame = UIScreen.main.bounds
-        tabBarController.setViewControllers([viewController1], animated: false)
+        tabBarController.setViewControllers([viewController1, viewController2], animated: false)
 
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
