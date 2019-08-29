@@ -46,6 +46,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2E4E8EAF2317DBF9009053FA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E8A4BFB230C241700D4C65B /* AppDelegate.swift */,
+				2E8A4BFD230C241700D4C65B /* SceneDelegate.swift */,
+				2E8A4C01230C241700D4C65B /* Main.storyboard */,
+				2E8A4C06230C241900D4C65B /* LaunchScreen.storyboard */,
+				2E8A4C04230C241900D4C65B /* Assets.xcassets */,
+				2E8A4C09230C241900D4C65B /* Info.plist */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
 		2E8A4BEF230C241700D4C65B = {
 			isa = PBXGroup;
 			children = (
@@ -66,13 +79,8 @@
 		2E8A4BFA230C241700D4C65B /* sheets-example */ = {
 			isa = PBXGroup;
 			children = (
-				2E8A4BFB230C241700D4C65B /* AppDelegate.swift */,
-				2E8A4BFD230C241700D4C65B /* SceneDelegate.swift */,
+				2E4E8EAF2317DBF9009053FA /* Support Files */,
 				2E8A4BFF230C241700D4C65B /* ExampleOneViewController.swift */,
-				2E8A4C01230C241700D4C65B /* Main.storyboard */,
-				2E8A4C04230C241900D4C65B /* Assets.xcassets */,
-				2E8A4C06230C241900D4C65B /* LaunchScreen.storyboard */,
-				2E8A4C09230C241900D4C65B /* Info.plist */,
 			);
 			path = "sheets-example";
 			sourceTree = "<group>";
