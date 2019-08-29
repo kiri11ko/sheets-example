@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ExampleOneViewController.swift
 //  SheetController
 //
 //  Created by Artyom Pstygo on 15.08.2019.
@@ -9,9 +9,14 @@
 import UIKit
 import sheets
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ExampleOneViewController: UIViewController, UITableViewDataSource {
 
     private var sheet: SheetController!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        definesPresentationContext = true
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -41,13 +46,10 @@ class ViewController: UIViewController, UITableViewDataSource {
         main.navigationItem.rightBarButtonItem = switchButton
 
         let sheet = SheetController(mainViewController: mainHolder, rootViewController: rootHolder)
+        sheet.modalPresentationStyle = .overCurrentContext
         self.sheet = sheet
 
-        sheet.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
-        let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([sheet], animated: false)
-        tabBarController.modalPresentationStyle = .overCurrentContext
-        present(tabBarController, animated: false)
+        present(sheet, animated: false)
     }
 
     @objc private func addButtonTap(_ sender: UIBarButtonItem) {
@@ -70,7 +72,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     static let count = 100
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ViewController.count
+        return ExampleOneViewController.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
