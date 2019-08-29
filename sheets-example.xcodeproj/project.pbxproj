@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E1C5CE6230C7F840065D455 /* sheets in Frameworks */ = {isa = PBXBuildFile; productRef = 2E1C5CE5230C7F840065D455 /* sheets */; };
+		2E4E8EB823184835009053FA /* SimpleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4E8EB723184835009053FA /* SimpleDataSource.swift */; };
 		2E8A4BFC230C241700D4C65B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A4BFB230C241700D4C65B /* AppDelegate.swift */; };
 		2E8A4BFE230C241700D4C65B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A4BFD230C241700D4C65B /* SceneDelegate.swift */; };
 		2E8A4C00230C241700D4C65B /* ExampleOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A4BFF230C241700D4C65B /* ExampleOneViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E4E8EB723184835009053FA /* SimpleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDataSource.swift; sourceTree = "<group>"; };
 		2E8A4BF8230C241700D4C65B /* sheets-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sheets-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E8A4BFB230C241700D4C65B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E8A4BFD230C241700D4C65B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 			path = "Support Files";
 			sourceTree = "<group>";
 		};
+		2E4E8EBB23184CFE009053FA /* Support Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2E4E8EB723184835009053FA /* SimpleDataSource.swift */,
+			);
+			path = "Support Classes";
+			sourceTree = "<group>";
+		};
 		2E8A4BEF230C241700D4C65B = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +89,7 @@
 		2E8A4BFA230C241700D4C65B /* sheets-example */ = {
 			isa = PBXGroup;
 			children = (
+				2E4E8EBB23184CFE009053FA /* Support Classes */,
 				2E4E8EAF2317DBF9009053FA /* Support Files */,
 				2E8A4BFF230C241700D4C65B /* ExampleOneViewController.swift */,
 			);
@@ -164,6 +175,7 @@
 			files = (
 				2E8A4C00230C241700D4C65B /* ExampleOneViewController.swift in Sources */,
 				2E8A4BFC230C241700D4C65B /* AppDelegate.swift in Sources */,
+				2E4E8EB823184835009053FA /* SimpleDataSource.swift in Sources */,
 				2E8A4BFE230C241700D4C65B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
